@@ -10,7 +10,7 @@ Team Members -
 
 Create a new react project using following commands 
 
-in terminal
+in terminal run following commands
 
      1.cd documents                           //create a folder in documents 
      
