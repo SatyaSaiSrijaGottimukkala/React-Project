@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Menu from './Menu';
 import Table from "react-bootstrap/Table"
 import Button from "react-bootstrap/Button"
-import {getCustomers,getCustomerById,deleteCustomer,updateCustomer, addCustomer} from '../services/CustomerData';
+import {getEmployees,getEmployeeById,updateEmployee} from '../services/EmployeeData';
 import {useHistory} from 'react-router'
 
 export function CustomeErAppF(){
