@@ -28,6 +28,11 @@ var salaries=[
 var saveLocalStorage = () =>{
     localStorage.setItem('salaries',JSON.stringify(salaries));
 }
+if(localStorage.getItem('salaries') === null){
+    saveLocalStorage();
+}else{
+    employee = JSON.parse(localStorage.getItem('salaries'));
+}
 
 //adding a new record to salaries
 export var addEmployeeSalary=(att)=>{
