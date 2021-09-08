@@ -14,7 +14,7 @@ var employee =[
 var saveLocalStorage = () =>{
     localStorage.setItem('employee',JSON.stringify(employee));
 }
-    if(localStorage.getItem('employee') == null){
+    if(localStorage.getItem('employee') === null){
         saveLocalStorage();
     }else{
         employee = JSON.parse(localStorage.getItem('employee'));
@@ -30,12 +30,12 @@ export var addEmployee = (emp)=>{
 }
 
 export var deleteEmployee = (id) =>{
-    employee = employee.filter((item)=>(item.id!=id));
+    employee = employee.filter((item)=>(item.id!==id));
     saveLocalStorage();
 }
 
 export var getEmployeeById = (id) =>{
-    var list = employee.filter((item)=>(item.id==id));
+    var list = employee.filter((item)=>(item.id===id));
     if(list.length > 0){
         return list[0];
     }else{
@@ -43,8 +43,17 @@ export var getEmployeeById = (id) =>{
    }
 }
 
+export var getEmployeeByEmail = (email) =>{
+    var list = employee.filter((item)=>(item.email===email));
+    if(list.length > 0){
+        return list[0];
+    }else{
+        return null
+   }
+}
+
 export var updateEmployee = (emp) =>{
-    var list = employee.filter((item)=>(item.id==emp.id));
+    var list = employee.filter((item)=>(item.id===emp.id));
     if(list.length > 0){
          list[0].name = emp.name;
          list[0].email = emp.email;
