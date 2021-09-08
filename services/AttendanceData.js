@@ -24,7 +24,7 @@ var attendance=
 var saveLocalStorage = () =>{
     localStorage.setItem('attendance',JSON.stringify(attendance));
 }
-if(localStorage.getItem('attendance') == null){
+if(localStorage.getItem('attendance') === null){
        saveLocalStorage();
 }else{
     employee = JSON.parse(localStorage.getItem('attendance'));
