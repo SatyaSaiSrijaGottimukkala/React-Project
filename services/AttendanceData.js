@@ -28,9 +28,9 @@ if(localStorage.getItem('attendance') === null){
        saveLocalStorage();
 }else{
     employee = JSON.parse(localStorage.getItem('attendance'));
-    }
+}
 
-//add attrndance of an employee
+//add attendance of an employee
 export var addEmployeeAttendance=(att)=>{
     attendance.push(att);
     saveLocalStorage();
