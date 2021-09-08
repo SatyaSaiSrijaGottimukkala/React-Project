@@ -1,4 +1,4 @@
-var empoloyee =[
+var employee =[
     {id:1, name:'Sagar',email:'sagar@gmail.com',address:'Andhra Pradesh',dateOfBirth:'1999-02-08',dateOfJoining:'2021-09-01',education:'Btech-CSE',type:'engineer',role:'normal',password:'sagar'},
     {id:2, name:'Suresh',email:'suresh@gmail.com',address:'Andhra Pradesh',dateOfBirth:'1998-02-08',dateOfJoining:'2021-09-01',education:'Btech-CSE',type:'engineer',role:'normal',password:'suresh'},
     {id:3, name:'Kiran',email:'kiran@gmail.com',address:'Andhra Pradesh',dateOfBirth:'1990-12-08',dateOfJoining:'2015-04-01',education:'Btech-CSE',type:'manager',role:'admin',password:'kiran'},
