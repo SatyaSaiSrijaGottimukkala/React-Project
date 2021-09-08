@@ -24,6 +24,11 @@ var attendance=
 var saveLocalStorage = () =>{
     localStorage.setItem('attendance',JSON.stringify(attendance));
 }
+if(localStorage.getItem('attendance') == null){
+       saveLocalStorage();
+}else{
+    employee = JSON.parse(localStorage.getItem('attendance'));
+    }
 
 //add attrndance of an employee
 export var addEmployeeAttendance=(att)=>{
