@@ -22,11 +22,11 @@ function Login(props) {
          console.log("employee.role:",employee.role)
          console.log("name:",employee.name)
          console.log("password:",password)
-         if (role===employee.role && employee.name===password){
+         if (role==="admin" && role===employee.role && employee.name===password){
             console.log("in func Admin")
             props.history.push('/Admin');
          }
-         else if(role===employee.role && employee.name===password){
+         else if(role==="normal" && role===employee.role && employee.name===password){
             console.log("in func employee")
             props.history.push('/Normal');
          }
