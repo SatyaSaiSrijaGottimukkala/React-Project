@@ -65,7 +65,7 @@ export var deleteEmployeeSalary=(employeeId)=>{
 }
 
 
-//delete by record id
+//delete record by record id
 export var deleteSalaryById=(id)=>{
     salaries=salaries.filter((item)=>{item.id!==id})
     saveLocalStorage()
