@@ -1,3 +1,4 @@
+//login according to role using employee email and name as password
 import React,{useState} from 'react';
 import {getEmployeeByEmail} from '../services/EmployeeData'
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
