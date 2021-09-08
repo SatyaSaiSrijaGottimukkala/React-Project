@@ -30,6 +30,9 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
                 console.log("in func employee")
                 props.history.push('/Normal');
             }
+            else{
+                alert("password is wrong "+employee.name)
+            }
         }
         else{
             alert("details are wrong")
