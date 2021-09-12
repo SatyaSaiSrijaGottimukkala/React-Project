@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { getEmployeeDeails } from "../services/UserSession";
 import { Link } from 'react-router-dom'
 
-// react-bootstrap components
+// react-bootstrap component
 import {
   Badge,
   Button,
