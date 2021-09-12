@@ -1,24 +1,51 @@
 import React,{useState} from 'react';
-import {getEmployee,getEmployees,getSalary,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql'
-//import { getEmployeeByEmail } from '../services/EmployeeData1';
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import {getEmployeeByEmail,signIn} from '../services/employee-gql'
 import ReactDOM from "react-dom";
-import {EmployeeDetails,clearEmployeeDetails} from "../services/UserSession"
+import {EmployeeDetails,clearEmployeeDetails,TokenStore} from "../services/UserSession"
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
-
+import Container from '@material-ui/core/Container';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/css/animate.min.css";
 import "../assets/scss/light-bootstrap-dashboard-react.scss?v=2.0.0";
 import "../assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
+import CssBaseline from '@material-ui/core/CssBaseline';
 import EmployeeLayout from "layouts/Employee";
 import AdminLayout from "layouts/Admin";
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
-   function Login(props) {
+const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(1),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+
+
+
+function Login(props) {
+      const classes = useStyles();
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState("");
-      const[employee,setemployee]=useState({})
+      
       var handleChange = (e) =>{
          if(e.target.name === "email"){
             setEmail(e.target.value);
@@ -27,82 +54,133 @@ import AdminLayout from "layouts/Admin";
          }
         
       }
-      
-    /*  var e=async()=>{
-            console.log("email", email)
-            const em=email
-            let employee1= await getEmployeeByEmail(em)
-            console.log("====>",employee1)
+      //SIGN IN FUNCTION FOR TOKEN
+      var sign = async(email,role)=>{
+        var token=await signIn(email,role)
+        console.log("token normal",JSON.stringify(token.signIn[0].id))
+        TokenStore(JSON.stringify(token.signIn[0].id));
+      }
 
-            setemployee(employee1[0])
-            console.log("in e: employee: ",employee)
-      }*/
+      var funct=async(username,role)=>{                               //NOT REQUIRED
+        console.log("here comes our emaillll",username)
+        let employee1= await getEmployeeByEmail(username)
+        let emp=employee1[0]
+        if (emp!==[]){
+          console.log("emp:   ",emp)
+          func(emp,role)}
+        
+     }
 
-      var func= async(email,role)=>{
-         //await e()
-         let employee1= await getEmployeeByEmail(email)
-         setemployee(employee1[0])
-         //var employee=getEmployeeByEmail(email)
-         //console.log(employee)
-        if (employee!==null)
-        {console.log("enter")
+      var func= (emp,role)=>{
+         
+        if (emp!==undefined)
+        {
+            console.log("enter")
+            console.log(emp)
             console.log("role:",role)
-            console.log("employee.role:",employee.role)
-            console.log("name:",employee.name)
+            console.log("employee.role:",emp.role)
+            console.log("name:",emp.name)
             console.log("password:",password)
-            if (role==="admin" && role===employee.role && employee.name===password){
+            if (role==="admin" && role===emp.role && emp.name===password){
+               
+               sign(emp.email,"admin")      //GETTING TOKEN
+               
                clearEmployeeDetails()
-               EmployeeDetails(employee)
+               EmployeeDetails(emp)
                 console.log("in func Admin")
                 ReactDOM.render(
                   <BrowserRouter>
                     <Switch>
                       <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-                      <Redirect from="/" to="/admin/Dashboard" />
+                      <Redirect from="/" to="/admin/dashboard" />
                     </Switch>
                   </BrowserRouter>,
                   document.getElementById("root")
                 );
             }
-            else if(role==="normal"&& role===employee.role && employee.name===password){
+            else if(role==="normal"&& role===emp.role && emp.name===password){
+             
+              sign(emp.email,"normal") // FOR NORMAL
+
                clearEmployeeDetails()
-               EmployeeDetails(employee)
+               EmployeeDetails(emp)
                 console.log("in func employee")
                 ReactDOM.render(
                   <BrowserRouter>
                     <Switch>
                       <Route path="/employee" render={(props) => <EmployeeLayout {...props} />} />
                    <Redirect from="/" to={"/employee/Employee-Profile"}/>
-                      {/*<Redirect from="/" to={"/employee/user" }/>*/}
                     </Switch>
                   </BrowserRouter>,
                   document.getElementById("root")
                 );
             }
             else{
-                alert("password is wrong "+employee.name)
+                alert("password is wrong "+emp.name)
             }
         }
         else{
             alert("details are wrong")
         }}
       return (
-         <div>
-            <h2>Login</h2>
-            <Form>
-               <FormGroup>
-               <Label for="exampleEmail">Email</Label>
-               <Input type="email" name="email" id="exampleEmail"  onChange={handleChange} value={email}  placeholder="with a placeholder" />
-               </FormGroup>
-               <FormGroup>
-               <Label for="examplePassword">Password</Label>
-               <Input type="password" name="password" id="examplePassword"  onChange={handleChange}  value={password} placeholder="password placeholder" />
-               </FormGroup>
-               <Button color="primary" onClick={()=>{func(email,"admin")}}>Admin</Button>
-            <Button color="primary" onClick={()=>{func(email,"normal")}}>Employee</Button>
-            </Form>
+        <Container component="main" maxWidth="xs">
+            <CssBaseline />
+        <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Log in
+        </Typography>
+            <form className={classes.form} noValidate>
+
+               <TextField
+            onChange={handleChange}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="email"
+            label="Email Address"
+            name="email"
+            autoComplete="email"
+            autoFocus
+          />
+
+               <TextField
+             onChange={handleChange}
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+          />
+
+               <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={()=>{funct(email,"admin")}}
+          >
+            Admin
+          </Button>
+          <Button
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={()=>{funct(email,"normal")}}
+          >
+            Employee
+          </Button>
+            </form>
          </div>
+         </Container>
       );
    }
     export default Login;
-    
