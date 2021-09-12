@@ -52,7 +52,7 @@ in terminal run following commands
 
 To connect our front-end project with backend we used graphql
 
-To add graphql request: run the following command in your terminal in your react folder
+To add graphql request: run the following command in your terminal inside your react folder
 
      yarn add graphql graphql-request
     
