@@ -45,3 +45,21 @@ in terminal run following commands
  check in your package.json to confirm the installation
  
  Note: packages we refered here should do the work if you get any error regarding it you can browse the error and get the material-UI installation command in npm documentation pages
+ 
+ 
+*******************************************************************************************************************************************************************
+
+
+To connect our front-end project with backend we used graphql
+we should add graphql request 
+
+     yarn add graphql graphql-request
+    
+    
+To create a database for this project and use it in react front-end mentioned here refer 
+
+https://github.com/sundar-gopal/Backend-graphql 
+
+follow the steps in Readme file in the above link to setup the database
+
+
