@@ -91,6 +91,7 @@ export default function AddLeave() {
      
 
             <h3>Add Leave</h3>
+            <div style={{width: '495px' ,color:"grey" }}>
             <input className="form-control" type = "date" name="startDate" placeholder="StartDate"
                 onChange={handleChange}
                 value={state.startDate}
@@ -108,6 +109,7 @@ export default function AddLeave() {
                 onChange={handleChange}
                 value={state.year}
             /> <br /><br />
+            </div>
             <Button variant="contained" color="primary" onClick={handleSubmit}>
                 Add
             </Button> &nbsp;&nbsp;
