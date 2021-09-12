@@ -84,12 +84,13 @@ export default function AddSal() {
         history.push("/admin/salary/"+emp_id);
 
     }
-    //type="number" step="0.1"
+    //type='number' step="0.1"
     return (
         <div >
      
 
             <h3>Add Salary</h3>
+            <div style={{width: '495px' ,color:"grey" }}>
             <input className="form-control"  name="monthYear" placeholder="Month Year"
                 onChange={handleChange}
                 value={state.monthYear}
@@ -135,6 +136,7 @@ export default function AddSal() {
                 onChange={handleChange}
                 value={state.workingDaysInMonth}
             /> <br /><br />
+            </div>
 
             
 
