@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import Select from 'react-select'
 import 'bootstrap/dist/css/bootstrap.css';
 import {
     Badge,
@@ -23,11 +23,44 @@ export default function AddEmp() {
         items: [], name: '', email: '', address:'',dateOfBirth:'',dateOfJoining:'',education:'',type:'',role:'',password:'', id: 0, bLabel: 'Add'
     });
     const params = useParams();
+    const [selected, setSelected] = useState([]);
+    const [options, setOptions] = useState([]);
+    const [selected1, setSelected1] = useState([]);
+    const [options1, setOptions1] = useState([]);
  
     useEffect(() => {
-       
+        reloadoptions();
+        reloadoptions1();
     }, [])
     const history = useHistory();
+
+    let reloadoptions = async () => {
+        var records = ['engineer','contract','manager','support']
+        var array1 = []
+        for (var i = 0; i < 4; i++) {
+        
+                array1.push({ label: records[i], value: records[i] })
+            
+        
+        }
+        setOptions(array1)
+        console.log("options",options)
+
+    }
+
+    let reloadoptions1 = async () => {
+        var records1 = ['admin','normal']
+        var array11 = []
+        for (var i = 0; i < 2; i++) {
+        
+                array11.push({ label: records1[i], value: records1[i] })
+            
+        
+        }
+        setOptions1(array11)
+        console.log("options1",options1)
+
+    }
 
 
 
@@ -63,9 +96,9 @@ export default function AddEmp() {
             dateOfBirth:state.dateOfBirth,
             dateOfJoining:state.dateOfJoining,
             education:state.education,
-            type:state.type,
-            role:state.role,
-            password:'normal',
+            type:selected.label,
+            role:selected1.label,
+            password:selected1.label,
             id: state.id
         };
         console.log(newItem)
@@ -99,9 +132,9 @@ export default function AddEmp() {
     }
     return (
         <div >
-     
-
             <h3>Add Employee</h3>
+            <br /><br />
+            <div style={{width: '495px' ,color:"grey" }}>
             <input className="form-control"   name="name" placeholder="Name"
                 onChange={handleChange}
                 value={state.name}
@@ -130,19 +163,37 @@ export default function AddEmp() {
                 value={state.education}
             /> <br /><br />
             
-            <input className="form-control" name="type" placeholder="Type"
+           {/*} <input className="form-control" name="type" placeholder="Type"
                 onChange={handleChange}
                 value={state.type}
-            /> <br /><br />
-            <input className="form-control" name="role" placeholder="Role"
+    /> <br /><br />*/}
+        <Select
+        placeholder="Select Type.."
+        options={options}
+        value={selected}
+        onChange={setSelected}
+        />
+        <br></br>
+        <br></br>
+        <Select
+        placeholder="Select Role.."
+        options={options1}
+        value={selected1}
+        onChange={setSelected1}
+        />
+        <br></br>
+        <br></br>
+        
+            {/*<input className="form-control" name="role" placeholder="Role"
                 onChange={handleChange}
                 value={state.role}
-            /> <br /><br />
+/> <br /><br />*/}
             
             <input className="form-control" name="password" placeholder="Password"
                 onChange={handleChange}
                 value={state.password}
             /> <br /><br />
+            </div>
 
 
             
