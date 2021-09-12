@@ -84,7 +84,7 @@ export default function AddSal() {
         history.push("/admin/salary/"+emp_id);
 
     }
-    //type='number' step="0.1"
+    //type="number" step="0.1"
     return (
         <div >
      
