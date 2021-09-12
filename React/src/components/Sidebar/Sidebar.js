@@ -54,7 +54,7 @@ function Sidebar({ color, image, routes }) {
         </div>
         <Nav>
           {routes.map((prop, key) => {
-            if(prop.name != "Salary" && prop.name != "Attendance" && prop.name != "AddEmployee" && prop.name != "Leave" && prop.name != "AddSalary"&& prop.name != "AddLeave"&& prop.name != "AddAttendance"){ 
+            if(prop.name != "Salary" && prop.name != "Attendance" && prop.name != "Add Employee" && prop.name != "Leave" && prop.name != "Add Salary"&& prop.name != "Add Leave"&& prop.name != "Add Attendance"){ 
             if (!prop.redirect)
               return (
                 <li
