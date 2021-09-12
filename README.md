@@ -26,3 +26,22 @@ in terminal run following commands
      
      7.yarn  start                             //run
  
+ 
+ Refer Readme of react file in this repository to download the template we are using through out our project
+ 
+ For styling of buttons and also login page we have used material-UI you can install the dependency using following commands
+ 
+ Open Terminal and navigate to the folder where you have installed the react prject 
+ follow the below steps to install material-UI
+     
+     1.yarn add @material-ui/core 
+                 or
+       npm install @material-ui/core
+     
+     2.yarn add @material-ui/icons
+                 or
+       npm install @material-ui/icons
+     
+ check in your package.json to confirm the installation
+ 
+ Note: packages we refered here should do the work if you get any error regarding it you can browse the error and get the material-UI installation command in npm documentation pages
