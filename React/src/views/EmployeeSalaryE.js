@@ -41,7 +41,7 @@ export default function CustomerAppF() {
         console.log("salary defined",salary);
        // let records1 = await getEmployeeByID(params.id);
 
-        //console.log("name is",records1[0].name);
+        //console.log("name",records1[0].name);
         //setname(records1[0].name); 
     }
   
