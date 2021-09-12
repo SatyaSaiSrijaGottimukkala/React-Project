@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {getEmployee,getEmployees,getSalary,deleteEmployee,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql';
 import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom'
-// react-bootstrap components
+// react-bootstrap component
 import {
   Badge,
   Card,
