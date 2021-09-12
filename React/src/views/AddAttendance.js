@@ -86,6 +86,7 @@ export default function AddAtt() {
      
 
             <h3>Add Attendance</h3>
+            <div style={{width: '495px' ,color:"grey" }}>
             <input className="form-control" type = "date" name="date" placeholder="Date"
                 onChange={handleChange}
                 value={state.date}
@@ -103,6 +104,7 @@ export default function AddAtt() {
                 onChange={handleChange}
                 value={state.totalHours}
             /> <br /><br />
+            </div>
             <Button  variant="contained" color="primary" onClick={handleSubmit}>
                 Add
             </Button> &nbsp;&nbsp;
