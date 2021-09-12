@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// react-bootstrap components
+// react-bootstrap component
 import {
   Badge,
   Card,
