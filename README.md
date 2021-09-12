@@ -68,7 +68,7 @@ follow the steps in Readme file in the above link to setup the database
 *******************************************************************************************************************************************************************
 
 
-After the database is created, in terminal, go to 'Backend-graphql' directory and run following two commands
+After the database is created, open terminal, go to 'Backend-graphql' directory and run following two commands
 
     1.npm install
      
@@ -76,4 +76,4 @@ After the database is created, in terminal, go to 'Backend-graphql' directory an
     
 Express server would run our project on port 4000.
 
-Then in another terminal window, go to project directory and run 'yarn start' command. The project runs on port 3000.
+Then in another terminal window, go to 'project' directory and run 'yarn start' command. The project runs on port 3000.
