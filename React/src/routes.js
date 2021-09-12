@@ -8,7 +8,7 @@
 * Copyright 2020 Creative Tim (https://www.creative-tim.com)
 * Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
 
-* Coded by Creative
+* Coded by Creative Tim
 
 =========================================================
 
@@ -61,28 +61,28 @@ const dashboardRoutes = [
   },*/
   {
     path: "/addsalary/:id",
-    name: "AddSalary",
+    name: "Add Salary",
     icon: "nc-icon nc-chart-pie-35",
     component: AddSal,
     layout: "/admin",
   },
   {
     path: "/addleave/:id",
-    name: "AddLeave",
+    name: "Add Leave",
     icon: "nc-icon nc-chart-pie-35",
     component: AddLeave,
     layout: "/admin",
   },
   {
     path: "/addattendance/:id",
-    name: "AddAttendance",
+    name: "Add Attendance",
     icon: "nc-icon nc-chart-pie-35",
     component: Addatt,
     layout: "/admin",
   },
   {
     path: "/addemployee",
-    name: "AddEmployee",
+    name: "Add Employee",
     icon: "nc-icon nc-chart-pie-35",
     component: AddEmp,
     layout: "/admin",
@@ -124,12 +124,12 @@ const dashboardRoutes = [
   },
   {
     path: "/salarylist",
-    name: "SalaryList",
-    icon: "nc-icon nc-notes",
+    name: "Salary List",
+    icon: "nc-icon nc-money-coins",
     component: SalaryList,
     layout: "/admin",
   },
-  {
+  /*{
     path: "/searchbydate",
     name: "Details By Date",
     icon: "nc-icon nc-circle-09",
@@ -139,7 +139,7 @@ const dashboardRoutes = [
  
    
  
-  /*{
+  {
     path: "/typography",
     name: "Typography",
     icon: "nc-icon nc-paper-2",
