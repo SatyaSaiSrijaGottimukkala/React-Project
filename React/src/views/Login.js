@@ -18,6 +18,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import {InputAdornment, IconButton } from "@material-ui/core";
+import Visibility from "@material-ui/icons/Visibility";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -45,6 +48,9 @@ function Login(props) {
       const classes = useStyles();
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState("");
+      const [showPassword, setShowPassword] = useState(false);
+      const handleClickShowPassword = () => setShowPassword(!showPassword);
+      const handleMouseDownPassword = () => setShowPassword(!showPassword);
       
       var handleChange = (e) =>{
          if(e.target.name === "email"){
@@ -155,9 +161,22 @@ function Login(props) {
             fullWidth
             name="password"
             label="Password"
-            type="password"
+            type={showPassword ? "text" : "password"}
             id="password"
             autoComplete="current-password"
+            InputProps={{ // <-- This is where the toggle button is added.
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              )
+            }}
           />
 
                <Button
