@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {getEmployee,getEmployees,getSalary,deleteEmployee,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql';
 import TextField from '@material-ui/core/TextField';
 import { useHistory } from 'react-router-dom'
-// react-bootstrap component
+// react-bootstrap components
 import {
   Badge,
   Card,
@@ -69,21 +69,22 @@ let handleChange1 = (e) => {
         //var selectField = $("#select").val();
         let records1 = await getEmployee();
         let array1 = []
-        console.log("rec",records1)
-
-        for (let j=0;j<records1.length;j++){
-          if (((records1[j][selected.label]).toLowerCase()).startsWith((searchText).toLowerCase())){
-              array1.push(records1[j])
+        if(selected.label!==undefined){
+          for (let j=0;j<records1.length;j++){
+         
+            if (((records1[j][selected.label]).toLowerCase()).startsWith((searchText).toLowerCase())){
+               array1.push(records1[j])
+            }
           }
+            setState({ ...state, items: array1 });
+
         }
-        setState({ ...state, items: array1 });
-
+        else{
+        alert("select a value from dropdown box to find the employee")
+        }
+        }
+      
       }
-    }
-  
-  
- 
-
     return (
         <div>
            <div > 
@@ -97,7 +98,7 @@ let handleChange1 = (e) => {
                 color="secondary"
           />
             <br /><br />
-        <div style={{width: '195px' ,color:"red" }}>
+        <div style={{width: '195px' ,color:"grey" }}>
         <Select 
                 options={options}
                 value={selected}
