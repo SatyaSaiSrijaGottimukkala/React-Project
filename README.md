@@ -10,7 +10,7 @@ Team Members -
 
 Create a new react project using following commands 
 
-in terminal run following commands
+In terminal run following commands
 
      1.cd documents                           //create a folder in documents 
      
@@ -31,8 +31,9 @@ in terminal run following commands
  
  For styling of buttons and also login page we have used material-UI you can install the dependency using following commands
  
- Open Terminal and navigate to the folder where you have installed the react prject 
- follow the below steps to install material-UI
+ Open Terminal and navigate to the folder where you have installed the react project 
+ 
+ Follow the below steps to install material-UI
      
      1.yarn add @material-ui/core 
                  or
@@ -62,4 +63,5 @@ To create a database for this project and use it in react front-end mentioned he
 https://github.com/sundar-gopal/Backend-graphql 
 
 follow the steps in Readme file in the above link to setup the database
+
 
