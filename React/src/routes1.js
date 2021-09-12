@@ -37,7 +37,7 @@ const dashboardRoutes = [
   {
     path: "/salary",
     name: "Salary",
-    icon: "nc-icon nc-notes",
+    icon: "nc-icon nc-money-coins",
     component: EmployeeSalaryE,
     layout: "/employee",
   },
@@ -45,7 +45,7 @@ const dashboardRoutes = [
   {
     path: "/Leaves",
     name: "Leaves",
-    icon: "nc-icon nc-paper-2",
+    icon: "nc-icon nc-album-2",
     component: Leaves,
     layout: "/employee",
   },
@@ -53,7 +53,7 @@ const dashboardRoutes = [
   {
     path: "/Attendance",
     name: "Attendance",
-    icon: "nc-icon nc-atom",
+    icon: "nc-icon nc-notes",
     component: Attendance,
     layout: "/employee",
   },
