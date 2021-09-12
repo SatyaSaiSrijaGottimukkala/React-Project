@@ -43,7 +43,7 @@ In terminal run following commands
                  or
        npm install @material-ui/icons
      
- check in your package.json to confirm the installation
+ check in your package.json to confirm the installation and also install all the packages mentioned in our package.json file which are necessary for various functionalities and features we have included in our project.
  
  Note: packages we refered here should do the work if you get any error regarding it you can browse the error and get the material-UI installation command in npm documentation pages
  
@@ -63,5 +63,9 @@ To create a database for this project and use it in react front-end mentioned he
 https://github.com/sundar-gopal/Backend-graphql 
 
 follow the steps in Readme file in the above link to setup the database
+
+
+*******************************************************************************************************************************************************************
+
 
 
