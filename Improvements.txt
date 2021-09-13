@@ -6,7 +6,7 @@ List of Issues to be Fixed :-
 4. Change the color of buttons-------------------fixed
 5. Remove the settings button ------------------Fixed
 6. Refresh goes to login page------------------fixed
-7. Give appropriate titles to some of the pages
+7. Give appropriate titles to some of the pages -------------------Fixed
 8. Change the google chrome link name --------------- Fixed
 9. To get the bar graph in dashboard the page needs to be rendered
 10. Login page to have an image related to project
