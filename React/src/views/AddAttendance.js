@@ -63,7 +63,7 @@ export default function AddAtt() {
             id: state.id
         };
         console.log(newItem)
-        if (state.id === 0) { //add 
+        //if (state.id === 0) { //add 
             let d = newItem.date
             console.log(d)
             let date1 = moment(d,'YYYY-MM-DD');
@@ -71,14 +71,15 @@ export default function AddAtt() {
             let v = date1.toISOString(true).split('+')[0] + 'Z';
             newItem.date  = v;
             addAttendace(newItem);
+            history.push("/admin/attendance/"+emp_id);
             
 
-        } else { //update
+        //} else { //update
 
         
 
-        }
-        history.push("/admin/attendance/"+emp_id);
+        //}
+        
 
     }
     return (
