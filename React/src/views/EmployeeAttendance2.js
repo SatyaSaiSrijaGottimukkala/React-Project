@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { getEmployeeDeails } from "../services/UserSession";
 import { Link } from 'react-router-dom'
 
-// react-bootstrap component
+// react-bootstrap components
 import {
   Badge,
   Button,
@@ -47,9 +47,9 @@ let reloadAtt = async (id) => {
             <Col md="12">
               <Card className="strpied-tabled-with-hover">
                 <Card.Header>
-                  <Card.Title as="h4">Attendance Table</Card.Title>
+                  <Card.Title as="h4">My Attendance </Card.Title>
                   <p className="card-category">
-                    All employees with actions
+                    List of my attendance
                   </p>
                 </Card.Header>
                 <Card.Body className="table-full-width table-responsive px-0">
