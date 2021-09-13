@@ -15,6 +15,7 @@ import Button from '@material-ui/core/Button';
 import { getEmployeeDeails,UpdateDetails } from "../services/UserSession";
 import {getEmployee,addEmployee,updateEmployee,getEmployees,getSalary,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql';
 import { useHistory } from 'react-router-dom'
+import moment from 'moment';
 
 function User() {
   const [state, setState] = useState({
@@ -57,7 +58,13 @@ let handleSubmit = async (e) => {
       };
       console.log("update profile is",newItem)
       console.log("password",newItem.password);
-      UpdateDetails(newItem);
+      let d = newItem.dateOfBirth 
+            console.log(d)
+            let d1 = moment(d,'YYYY-MM-DD');
+            console.log(d1)
+            let v = d1.toISOString(true).split('+')[0] + 'Z';
+            newItem.dateOfBirth  = v;
+      UpdateDetails(newItem)
       updateEmployee(newItem);
       history.push("/admin/user")
         
@@ -181,7 +188,7 @@ let handleSubmit = async (e) => {
                         <Form.Control
                          name = "dateOfJoining"
                         onChange={handleChange}
-                          value={state.dateOfJoining}
+                          value={state.dateOfJoining.substring(0, 10)}
                           disabled
                           placeholder="DOJ"
                           type="text"
@@ -208,7 +215,7 @@ let handleSubmit = async (e) => {
                         <Form.Control
                         name="dateOfBirth"
                         onChange={handleChange}
-                          value={state.dateOfBirth}
+                          value={state.dateOfBirth.substring(0, 10)}
                           placeholder="DOB"
                           type="text"
                         ></Form.Control>
