@@ -88,7 +88,10 @@ export default function AddAtt() {
 
             <h3>Add Attendance</h3>
             <div style={{width: '495px' ,color:"grey" }}>
-            <input className="form-control" type = "date" name="date" placeholder="Date"
+            <input className="form-control" type = "text" 
+                onFocus={(e) => (e.currentTarget.type = "date")}
+                onBlur={(e) => (e.currentTarget.type = "text")}
+                name="date" placeholder="Date"
                 onChange={handleChange}
                 value={state.date}
             /> <br /><br />
