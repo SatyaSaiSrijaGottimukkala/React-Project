@@ -2,10 +2,10 @@ List of Issues to be Fixed :-
 
 1. Creative tim addresses to be removed
 2. Remove the bottom navbar -Fixed
-3. During logout the path needs to be changed
-4. Change the color of buttons
+3. During logout the path needs to be changed-----fixed
+4. Change the color of buttons-------------------fixed
 5. Remove the settings button -Fixed
-6. Refresh goes to login page
+6. Refresh goes to login page-----------fixed
 7. Give appropriate titles to some of the pages
 8. Change the google chrome link name ------ Fixed
 9. To get the bar graph in dashboard the page needs to be rendered
