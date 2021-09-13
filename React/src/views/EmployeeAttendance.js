@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {getEmployee,getEmployees,deleteAttendance,getSalary,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql'
+import {getEmployee,getEmployees,deleteAttendance,getEmployeeByID,getSalary,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql'
 import { useHistory, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -21,6 +21,7 @@ function AttendanceList() {
   const [state, setState] = useState({
         items: [], name: '', email: '', address: '', phone: '', id: 0, bLabel: 'Add'
     });
+    const[name,setname]=useState('');
     const params = useParams();
     const emp_id = params.id;
     useEffect(() => {
@@ -32,6 +33,9 @@ const history = useHistory();
     let reloadAtt= async (id) => {
         let records = await getAttendanceByEmployeeId(id); 
         setState({ ...state, items: records });
+        let records1 = await getEmployeeByID(emp_id);
+      console.log("name is",records1[0].name);
+      setname(records1[0].name); 
     }
     let dodelete =(id)=>{
       console.log("id is",id);
@@ -50,12 +54,13 @@ const history = useHistory();
             <hr></hr>
             <CustomerList items={state.items}
             dodelete={dodelete}
+            emp_name={name}
                 />
         </div>
     );
 
   }
-function CustomerList({ items,dodelete}) {
+function CustomerList({ items,dodelete,emp_name}) {
   return (
     <>
       <Container fluid>
@@ -74,6 +79,7 @@ function CustomerList({ items,dodelete}) {
                     <tr>
                       <th className="border-0">ID</th>
                       <th className="border-0">EmployeeId</th>
+                      <th className="border-0">Name</th>
                       <th className="border-0">Date</th>
                       <th className="border-0">inTimeDate</th>
                       <th className="border-0">OutTime</th>
@@ -88,6 +94,7 @@ function CustomerList({ items,dodelete}) {
                         <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.employeeId}</td>
+                            <td>{emp_name}</td>
                             <td>{item.date}</td>
                             <td>{item.inTimeDate}</td>
                             <td>{item.outTime}</td>
