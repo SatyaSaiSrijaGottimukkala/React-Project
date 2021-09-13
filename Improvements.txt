@@ -1,0 +1,20 @@
+List of Issues to be Fixed :-
+
+1. Creative tim addresses to be removed
+2. Remove the bottom navbar
+3. During logout the path needs to be changed
+4. Change the color of buttons
+5. Remove the settings button
+6. Refresh goes to login page
+7. Give appropriate titles to some of the pages
+8. Change the google chrome link name - Fixed
+9. To get the bar graph in dashboard the page needs to be rendered
+10. Login page to have an image related to project
+11. Use protected for security (didn't have app.js in our folder, need to find a solution for this)
+12. Change the images of the users in user profile
+13. Remove 2 button click links which takes us to creative tim website
+14. Updating password of the user
+15. Sorting the list in descending order. (need to change the string type of date to type date and the do the sorting)
+16. Display employee names in places where required
+17. Can have dashboard for employees with some fields
+18. In leaves,attendance of employee page change the isostring format to mm-dd-yyyy format
