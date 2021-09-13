@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useParams} from 'react-router'
 import { useHistory } from 'react-router'
 import jsPDF from "jspdf";
+import 'jspdf-autotable'
 import {
     Badge,
     
@@ -14,7 +15,7 @@ import {
     Col,
   } from "react-bootstrap";
   import Button from '@material-ui/core/Button';
-  import 'jspdf-autotable'
+
   import {getEmployee,getEmployees,deleteSalary,getEmployeeByID,getSalary,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql';
 
 
@@ -28,55 +29,80 @@ export default function CustomerAppF() {
     const history = useHistory();
     useEffect(() => {
         
-        reloadSal();
+        reloadSal(emp_id);
     },[]);
+
+    let reloadSal =  async (emp_id) => {
+      //const id = params.id;
+      let records =  await getSalaryByEmployeeId(emp_id); 
+      let records1 = await getEmployeeByID(emp_id);
+      console.log("name is",records1[0].name);
+      setname(records1[0].name); 
+      //console.log("records",records)
+      //console.log("records1",records[0]);
+      //console.log("type",typeof(records[0].basic))
+      setsalary(records)
+      console.log("salary defined",salary)
+  }
    
-    
-    let generate_pdf = (item)=>{
+     let generate_pdf = (item)=>{
+
       var doc = new jsPDF("p","pt","a4");
+      
       doc.text(240,20,"Yara International")
+      
       doc.text(260,40,"Salary-Slip")
+      
       doc.autoTable({ html: '#my-table' })
-       doc.autoTable({
-           head: [['Fields', 'Data']],
-         body: [
-           ['Employee name',name],
-           ['employee id',item.employeeId],
-           ['salary month-year',item.monthYear],
-           ['Working daya in a month',item.workingDaysInMonth],
-           ['Basic',item.basic],
-           ['LTA',item.lta],
-           ['HRA',item.hra],
-           ['Variable',item.variable],
-           ['Bonus',item.bonus],
-           ['TDS',item.TDS],
-           ['Tax',item.tax],
-           ['Total',item.total],
-           ],
-          })
+      
+      doc.autoTable({
+      
+      head: [['Fields', 'Data']],
+      
+      body: [
+      
+      ['Employee name',name],
+      
+      ['employee id',item.employeeId],
+      
+      ['salary month-year',item.monthYear],
+      
+      ['Working daya in a month',item.workingDaysInMonth],
+      
+      ['Basic',item.basic],
+      
+      ['LTA',item.lta],
+      
+      ['HRA',item.hra],
+      
+      ['Variable',item.variable],
+      
+      ['Bonus',item.bonus],
+      
+      ['TDS',item.TDS],
+      
+      ['Tax',item.tax],
+      
+      ['Total',item.total],
+      
+      ],
+      
+      })
+      
       doc.save("payslip.pdf")
-   }
+      
+      }
 
      let dodelete =(id)=>{
        console.log("id is",id);
       deleteSalary(id)
+      reloadSal(emp_id)
       history.push("/admin/salary/"+emp_id);
 
      }
 
     
-    let reloadSal =  async () => {
-        //const id = params.id;
-        let records =  await getSalaryByEmployeeId(params.id); 
-        let records1 = await getEmployeeByID(params.id);
-        console.log("name is",records1[0].name);
-        setname(records1[0].name); 
-        //console.log("records",records)
-        //console.log("records1",records[0]);
-        //console.log("type",typeof(records[0].basic))
-        setsalary(records)
-        console.log("salary defined",salary)
-    }
+    
     
    
     return (
