@@ -116,12 +116,13 @@ export default function CustomerAppF() {
 
             <SalaryList items={salary}
              generate_pdf={generate_pdf}
-             dodelete={dodelete}        
+             dodelete={dodelete} 
+             emp_name={name}       
                 />
         </div>
     );
 }
-function SalaryList({ items,generate_pdf,dodelete }) {
+function SalaryList({ items,generate_pdf,dodelete,emp_name }) {
       return (
     <>
       <Container fluid>
@@ -140,6 +141,7 @@ function SalaryList({ items,generate_pdf,dodelete }) {
                     <tr>
               
                       <th className="border-0">EmployeeId</th>
+                      <th className="border-0">Name</th>
                       <th className="border-0">Month Year</th>
                       <th className="border-0">Basic</th>
                       <th className="border-0">LTA</th>
@@ -160,6 +162,7 @@ function SalaryList({ items,generate_pdf,dodelete }) {
                     {items.map(item => (
                         <tr key={item.employeeId}>
                              <td>{item.employeeId}</td>
+                             <td>{emp_name}</td>
                              <td>{item.monthYear}</td>
                             <td>{item.basic}</td>
                             <td>{item.lta}</td>
@@ -186,3 +189,4 @@ function SalaryList({ items,generate_pdf,dodelete }) {
     </>
   );
 }
+
