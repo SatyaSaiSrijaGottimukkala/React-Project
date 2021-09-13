@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {getEmployee,getEmployees,getSalary,getLeaves,deleteLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql'
+import {getEmployee,getEmployees,getSalary,getLeaves,deleteLeaves,getEmployeeByID,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql'
 import { useHistory, useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -23,6 +23,7 @@ function LeaveList() {
         items: [], name: '', email: '', address: '', phone: '', id: 0, bLabel: 'Add'
     });
     const params = useParams();
+    const[name,setname]=useState('');
     const emp_id = params.id;
     useEffect(() => {
         reloadCustomer(emp_id);
@@ -43,6 +44,9 @@ const history = useHistory();
         //let records1 = await getSalary();
         console.log("attendance records are:", records1);
         setState({ ...state, items: records });
+        let records2 = await getEmployeeByID(emp_id);
+      console.log("name is",records2[0].name);
+      setname(records2[0].name);
     }
 
     return (
@@ -54,12 +58,13 @@ const history = useHistory();
             <hr></hr>
             <CustomerList items={state.items}
             dodelete={dodelete}
+            emp_name={name}
                 />
         </div>
     );
 
   }
-function CustomerList({ items,dodelete}) {
+function CustomerList({ items,dodelete,emp_name}) {
   return (
     <>
       <Container fluid>
@@ -79,6 +84,7 @@ function CustomerList({ items,dodelete}) {
               
                       <th className="border-0">ID</th>
                       <th className="border-0">EmployeeId</th>
+                      <th className="border-0">Name</th>
                       <th className="border-0">StartDate</th>
                       <th className="border-0">EndDate</th>
                       <th className="border-0">Count</th>
@@ -93,6 +99,7 @@ function CustomerList({ items,dodelete}) {
                         <tr key={item.id}>
                             <td>{item.id}</td>
                             <td>{item.employeeId}</td>
+                            <td>{emp_name}</td>
                             <td>{item.startDate}</td>
                             <td>{item.endDate}</td>
                             <td>{item.count}</td>
@@ -115,3 +122,4 @@ function CustomerList({ items,dodelete}) {
 
 
 export default LeaveList;
+
