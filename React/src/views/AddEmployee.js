@@ -150,11 +150,18 @@ export default function AddEmp() {
                 value={state.address}
             /> <br /><br />
            
-             <input className="form-control" type = "date" name="dateOfBirth" placeholder="DOB"
+             <input className="form-control" type = "text" 
+                onFocus={(e) => (e.currentTarget.type = "date")}
+                onBlur={(e) => (e.currentTarget.type = "text")}
+                name="dateOfBirth" 
+                placeholder="DateOfBirth"
                 onChange={handleChange}
                 value={state.dateOfBirth}
             /> <br /><br />
-             <input className="form-control" type = "date" name="dateOfJoining" placeholder="Date of Joining"
+             <input className="form-control" type = "text" 
+             onFocus={(e) => (e.currentTarget.type = "date")}
+             onBlur={(e) => (e.currentTarget.type = "text")}
+             name="dateOfJoining" placeholder="Date of Joining"
                 onChange={handleChange}
                 value={state.dateOfJoining}
             /> <br /><br />
