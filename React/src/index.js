@@ -8,7 +8,7 @@
 * Copyright 2020 Creative Tim (https://www.creative-tim.com)
 * Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard-react/blob/master/LICENSE.md)
 
-* Coded by Creative
+* Coded by Creative Tim
 
 =========================================================
 
@@ -26,15 +26,16 @@ import "./assets/scss/light-bootstrap-dashboard-react.scss?v=2.0.0";
 import "./assets/css/demo.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Login from 'views/Login'
-
 import AdminLayout from "layouts/Admin.js";
+import EmployeeLayout from "layouts/Employee";
 
 ReactDOM.render(
   <BrowserRouter>
     <Switch>
-       { /*<Route path="/admin" render={(props) => <AdminLayout {...props} />} /> */ }
-  
-     <Login/>
+    <Route path="/login" render={(props) => <Login />} />
+      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+      <Route path="/employee" render={(props) => <EmployeeLayout {...props} />} />
+      <Redirect from="/" to="/login" />
     </Switch>
   </BrowserRouter>,
   document.getElementById("root")
