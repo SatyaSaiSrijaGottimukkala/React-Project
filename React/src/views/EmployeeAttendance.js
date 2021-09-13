@@ -70,7 +70,7 @@ function CustomerList({ items,dodelete,emp_name}) {
               <Card.Header>
                 <Card.Title as="h4">Attendance Table</Card.Title>
                 <p className="card-category">
-                  All employees with actions
+                   Attendance details of an employee
                 </p>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
