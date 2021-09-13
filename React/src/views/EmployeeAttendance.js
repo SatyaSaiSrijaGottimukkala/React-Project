@@ -95,7 +95,7 @@ function CustomerList({ items,dodelete,emp_name}) {
                             <td>{item.id}</td>
                             <td>{item.employeeId}</td>
                             <td>{emp_name}</td>
-                            <td>{item.date}</td>
+                            <td>{item.date.substring(0, 10)}</td>
                             <td>{item.inTimeDate}</td>
                             <td>{item.outTime}</td>
                             <td>{item.totalHours}</td>
