@@ -71,7 +71,7 @@ let reloadAtt = async (id) => {
                           <tr key={item.id}>
                               <td>{item.id}</td>
                               <td>{item.employeeId}</td>
-                              <td>{item.date}</td>
+                              <td>{item.date.substring(0, 10)}</td>
                               <td>{item.inTimeDate}</td>
                               <td>{item.outTime}</td>
                               <td>{item.totalHours}</td>
