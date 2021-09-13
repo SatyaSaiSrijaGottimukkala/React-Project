@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { useLocation, Route, Switch } from "react-router-dom";
 
 import AdminNavbar from "components/Navbars/EmployeeNavbar";
-import Footer from "components/Footer/Footer";
+//import Footer from "components/Footer/Footer";
 import Sidebar from "components/Sidebar/Sidebar1";
-import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
+//import FixedPlugin from "components/FixedPlugin/FixedPlugin.js";
 
 import routes from "routes1.js";
 
@@ -56,17 +56,9 @@ function Employee() {
           <div className="content">
             <Switch>{getRoutes(routes)}</Switch>
           </div>
-          <Footer />
+         
         </div>
       </div>
-      <FixedPlugin
-        hasImage={hasImage}
-        setHasImage={() => setHasImage(!hasImage)}
-        color={color}
-        setColor={(color) => setColor(color)}
-        image={image}
-        setImage={(image) => setImage(image)}
-      />
     </>
   );
 }
