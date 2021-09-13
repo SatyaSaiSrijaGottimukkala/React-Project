@@ -92,11 +92,17 @@ export default function AddLeave() {
 
             <h3>Add Leave</h3>
             <div style={{width: '495px' ,color:"grey" }}>
-            <input className="form-control" type = "date" name="startDate" placeholder="StartDate"
+            <input className="form-control" type = "text" 
+            onFocus={(e) => (e.currentTarget.type = "date")}
+            onBlur={(e) => (e.currentTarget.type = "text")}
+            name="startDate" placeholder="StartDate"
                 onChange={handleChange}
                 value={state.startDate}
             /> <br /><br />
-            <input className="form-control" type = "date" name="endDate" placeholder="endDate"
+            <input className="form-control" type = "text" 
+            onFocus={(e) => (e.currentTarget.type = "date")}
+            onBlur={(e) => (e.currentTarget.type = "text")}
+            name="endDate" placeholder="endDate"
                 onChange={handleChange}
                 value={state.endDate}
             /> <br /><br />
