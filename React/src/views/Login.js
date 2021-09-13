@@ -21,6 +21,7 @@ import Button from '@material-ui/core/Button';
 import {InputAdornment, IconButton } from "@material-ui/core";
 import Visibility from "@material-ui/icons/Visibility";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import {useHistory} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     paper: {
@@ -45,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 function Login(props) {
+      const history=useHistory()
       const classes = useStyles();
       const [email, setEmail] = useState('');
       const [password, setPassword] = useState("");
@@ -91,35 +93,18 @@ function Login(props) {
                
                sign(emp.email,"admin")      //GETTING TOKEN
                
-               clearEmployeeDetails()
+               //clearEmployeeDetails()
                EmployeeDetails(emp)
-                console.log("in func Admin")
-                ReactDOM.render(
-                  <BrowserRouter>
-                    <Switch>
-                      <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
-                      <Redirect from="/" to="/admin/dashboard" />
-                    </Switch>
-                  </BrowserRouter>,
-                  document.getElementById("root")
-                );
+               history.push('/admin/dashboard');
             }
             else if(role==="normal"&& role===emp.role && emp.name===password){
              
               sign(emp.email,"normal") // FOR NORMAL
 
-               clearEmployeeDetails()
+               //clearEmployeeDetails()
                EmployeeDetails(emp)
                 console.log("in func employee")
-                ReactDOM.render(
-                  <BrowserRouter>
-                    <Switch>
-                      <Route path="/employee" render={(props) => <EmployeeLayout {...props} />} />
-                   <Redirect from="/" to={"/employee/Employee-Profile"}/>
-                    </Switch>
-                  </BrowserRouter>,
-                  document.getElementById("root")
-                );
+                history.push('/employee/Employee-Profile');
             }
             else{
                 alert("password is wrong "+emp.name)
