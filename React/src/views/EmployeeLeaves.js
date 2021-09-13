@@ -4,7 +4,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import { getEmployeeDeails } from "../services/UserSession";
 import { Link } from 'react-router-dom'
 
-// react-bootstrap component
+// react-bootstrap components
 import {
   Badge,
   Button,
@@ -47,9 +47,9 @@ function CustomerList({ items}) {
           <Col md="12">
             <Card className="strpied-tabled-with-hover">
               <Card.Header>
-                <Card.Title as="h4">Leaves Table</Card.Title>
+                <Card.Title as="h4">My Leaves</Card.Title>
                 <p className="card-category">
-                  All employees with actions
+                List of my leaves
                 </p>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
@@ -93,89 +93,3 @@ function CustomerList({ items}) {
 
 
 export default LeaveList;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*import React, { useEffect, useState } from 'react';
-import { getLeavesById } from '../services/LeavesData';
-import { getEmployeeDeails } from "../services/UserSession";
-
-
-export default function Leaves() {
-    const [state, setState] = useState({
-        items: [], name: '', email: '', address: '', phone: '', id: 0, bLabel: 'Add'
-    });
-
-    const employee=getEmployeeDeails()
-    console.log("employee:",employee);
-    console.log(employee.id)
-
-
-    const Leaves=getLeavesById(employee.id)
-    console.log(Leaves)
-    if (Leaves===null){
-        return(
-            <div>
-                <h1>Leaves of employee</h1>
-                <h2>No Leaves</h2>
-            </div>
-        )
-    
-    }
-    else{
-    return (
-        <div>
-            <LeavesList Leaves={Leaves}/>
-        </div>
-    );}
-}
-//    {id:1,employeeId:4,startDate:'2021-08-01',endDate:'2021-08-02',count:2,year:2021,dateOfEntry:'2021-07-30',dateOfModify:'2021-07-30'},
-
-function LeavesList({  Leaves }) {
-    return (
-        <div>
-            <h1>Leaves of employee</h1>
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>LeaveId</th>
-                        <th>employeeId</th>
-                        <th>startDate</th>
-                        <th>endDate</th>
-                        <th>count</th>
-                        <th>year</th>
-                        <th>dateOfEntry</th>
-                        <th>dateOfModify</th>
-                       
-                    </tr>
-                </thead>
-                <tbody>
-                    {Leaves.map(item => (
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.employeeId}</td>
-                            <td>{item.startDate}</td>
-                            <td>{item.endDate}</td>
-                            <td>{item.count}</td>
-                            <td>{item.year}</td>
-                            <td>{item.dateOfEntry}</td>
-                            <td>{item.dateOfModify}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
-}*/
