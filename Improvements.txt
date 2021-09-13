@@ -11,7 +11,7 @@ List of Issues to be Fixed :-
 9. To get the bar graph in dashboard the page needs to be rendered
 10. Login page to have an image related to project
 11. Use protected for security (didn't have app.js in our folder, need to find a solution for this)
-12. Remove 2 button click links which takes us to creative tim website
+12. Remove 2 button click links which takes us to creative tim website. -----------------fixed
 13. Sorting the list in descending order. (need to change the string type of date to type date and the do the sorting)
 14. Display employee names in places where required  ----------------fixed
 15. Can have dashboard for employees with some fields
