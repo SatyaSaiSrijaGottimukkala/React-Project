@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// react-bootstrap component
+// react-bootstrap components
 import {
   Badge,
   Card,
@@ -56,6 +56,12 @@ let handleSubmit = async (e) => {
           id: state.id
       };
       console.log("update profile is",newItem)
+      let d = newItem.dateOfBirth 
+            console.log(d)
+            let d1 = moment(d,'YYYY-MM-DD');
+            console.log(d1)
+            let v = d1.toISOString(true).split('+')[0] + 'Z';
+            newItem.dateOfBirth  = v;
       UpdateDetails(newItem)
       updateEmployee(newItem);
       history.push("/admin/Employee-Profile")
@@ -180,7 +186,7 @@ let handleSubmit = async (e) => {
                         <Form.Control
                          name = "dateOfJoining"
                         onChange={handleChange}
-                          value={state.dateOfJoining}
+                          value={state.dateOfJoining.substring(0, 10)}
                           disabled
                           placeholder="DOJ"
                           type="text"
@@ -207,7 +213,7 @@ let handleSubmit = async (e) => {
                         <Form.Control
                         name="dateOfBirth"
                         onChange={handleChange}
-                          value={state.dateOfBirth}
+                          value={state.dateOfBirth.substring(0, 10)}
                           placeholder="DOB"
                           type="text"
                         ></Form.Control>
