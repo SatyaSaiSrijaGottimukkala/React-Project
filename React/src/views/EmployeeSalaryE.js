@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import {useParams} from 'react-router'
 import { getEmployeeDeails } from "../services/UserSession"
+import jsPDF from "jspdf";
+import 'jspdf-autotable'
 import {
     Badge,
     Card,
@@ -10,8 +13,7 @@ import {
     Row,
     Col,
   } from "react-bootstrap";
-  import jsPDF from "jspdf";
-  import 'jspdf-autotable'
+ 
   import Button from '@material-ui/core/Button';
   import {getEmployee,getEmployeeByID,getEmployees,getSalary,getLeaves,getEmployeeByEmail,getLeavesByEmployeeId,getAttendanceByEmployeeId,getSalaryByEmployeeId} from '../services/employee-gql';
 
@@ -23,7 +25,8 @@ export default function CustomerAppF() {
    
     const[salary,setsalary] = useState([]);
     const[sal,setsal] = useState([]);
-   // const[name,setname]=useState('');
+    const[name,setname]=useState('');
+    const params = useParams();
     useEffect(() => {
         reloadSal();
     },[]);
@@ -39,36 +42,61 @@ export default function CustomerAppF() {
         console.log("records",records)
         setsalary(records)
         console.log("salary defined",salary);
-       // let records1 = await getEmployeeByID(params.id);
-
-        //console.log("name",records1[0].name);
-        //setname(records1[0].name); 
+        let records1 = await getEmployeeByID(employee.id);
+        console.log("records1 is",records1);
+        console.log("name is",records1[0].name);
+        setname(records1[0].name); 
     }
   
-    let generate_pdf = (item)=>{
+     let generate_pdf = (item)=>{
+
       var doc = new jsPDF("p","pt","a4");
+      
       doc.text(240,20,"Yara International")
+      
       doc.text(260,40,"Salary-Slip")
+
+      //doc.setFontStyle('bold')
+      
       doc.autoTable({ html: '#my-table' })
-       doc.autoTable({
-           head: [['Fields', 'Data']],
-         body: [
-           ['Employee name',employee.name],
-           ['employee id',item.employeeId],
-           ['salary month-year',item.monthYear],
-           ['Working daya in a month',item.workingDaysInMonth],
-           ['Basic',item.basic],
-           ['LTA',item.lta],
-           ['HRA',item.hra],
-           ['Variable',item.variable],
-           ['Bonus',item.bonus],
-           ['TDS',item.TDS],
-           ['Tax',item.tax],
-           ['Total',item.total],
-           ],
-          })
+      
+      doc.autoTable({
+      
+      head: [['Fields', 'Data']],
+      
+      body: [
+      
+      ['Employee name',name],
+      
+      ['employee id',item.employeeId],
+      
+      ['Salary month-year',item.monthYear],
+      
+      ['Working daya in a month',item.workingDaysInMonth],
+      
+      ['Basic',item.basic],
+      
+      ['LTA',item.lta],
+      
+      ['HRA',item.hra],
+      
+      ['Variable',item.variable],
+      
+      ['Bonus',item.bonus],
+      
+      ['TDS',item.TDS],
+      
+      ['Tax',item.tax],
+      
+      ['Total',item.total],
+      
+      ],
+      
+      })
+      
       doc.save("payslip.pdf")
-   }
+      
+      }
 
 
  
@@ -78,8 +106,6 @@ export default function CustomerAppF() {
    
     return (
         <div>
-    
-            <h3>Employee Salary</h3>
             <CustomerList items={salary}
                 generate_pdf={generate_pdf} 
                 />
@@ -94,9 +120,9 @@ function CustomerList({ items,generate_pdf }) {
           <Col md="12">
             <Card className="strpied-tabled-with-hover">
               <Card.Header>
-                <Card.Title as="h4">Employee Salary</Card.Title>
+                <Card.Title as="h4">My Salary</Card.Title>
                 <p className="card-category">
-                  Salary with all components 
+                  List of my Salary with all components 
                 </p>
               </Card.Header>
               <Card.Body className="table-full-width table-responsive px-0">
