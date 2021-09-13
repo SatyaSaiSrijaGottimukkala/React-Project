@@ -21,7 +21,7 @@ import Login from 'views/Login'
 import { Navbar, Container, Nav, Dropdown, Button } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import routes from "routes1.js";
-import ReactDOM from "react-dom";
+
 
 function Header() {
     const history = useHistory();
@@ -39,16 +39,7 @@ function Header() {
   };
 
   const handleClick = () => {
-    ReactDOM.render(
-      <BrowserRouter>
-        <Switch>
-        <Route  render={() => <Login />} />
-       <Redirect  to={"/"}/>
-          {/*<Redirect from="/" to={"/employee/user" }/>*/}
-        </Switch>
-      </BrowserRouter>,
-      document.getElementById("root")
-    );
+    history.push("/login")
   }
 
   const getBrandText = () => {
@@ -57,7 +48,7 @@ function Header() {
         return routes[i].name;
       }
     }
-    return "Brand";
+    return "";
   };
   return (
     <Navbar bg="light" expand="lg">
