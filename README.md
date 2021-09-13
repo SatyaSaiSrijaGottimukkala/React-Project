@@ -14,9 +14,11 @@ git clone https://github.com/SatyaSaiSrijaGottimukkala/React-Project/React,git
 
 Install the dependencies:
 
+
 npm install
      or
 yarn install
+
 
 
 
