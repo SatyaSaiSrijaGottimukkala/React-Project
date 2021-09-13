@@ -1,6 +1,6 @@
 List of Issues to be Fixed :-
 
-1. Creative tim addresses to be removed
+1. Creative tim addresses to be removed. --------------fixed
 2. Remove the bottom navbar -----------------Fixed
 3. During logout the path needs to be changed-----fixed
 4. Change the color of buttons-------------------fixed
