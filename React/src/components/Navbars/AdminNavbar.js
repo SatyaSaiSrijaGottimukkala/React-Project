@@ -39,16 +39,7 @@ function Header() {
     document.body.appendChild(node);
   };
   const handleClick = () => {
-    ReactDOM.render(
-      <BrowserRouter>
-        <Switch>
-        <Route  render={(props) => <Login {...props} />} />
-       <Redirect  to={"/"}/>
-          {/*<Redirect from="/" to={"/employee/user" }/>*/}
-        </Switch>
-      </BrowserRouter>,
-      document.getElementById("root")
-    );
+    history.push("/login")
   }
 
   const getBrandText = () => {
@@ -57,7 +48,7 @@ function Header() {
         return routes[i].name;
       }
     }
-    return "Brand";
+    return "";
   };
   return (
     <Navbar bg="light" expand="lg">
