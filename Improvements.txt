@@ -15,4 +15,4 @@ List of Issues to be Fixed :-
 13. Sorting the list in descending order. (need to change the string type of date to type date and the do the sorting)
 14. Display employee names in places where required  ----------------fixed
 15. Can have dashboard for employees with some fields
-16. In leaves,attendance of employee page change the isostring format to mm-dd-yyyy format
+16. In leaves,attendance of employee page change the isostring format to mm-dd-yyyy format.  -----------fixed
