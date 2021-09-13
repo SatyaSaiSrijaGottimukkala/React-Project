@@ -100,8 +100,8 @@ function CustomerList({ items,dodelete,emp_name}) {
                             <td>{item.id}</td>
                             <td>{item.employeeId}</td>
                             <td>{emp_name}</td>
-                            <td>{item.startDate}</td>
-                            <td>{item.endDate}</td>
+                            <td>{item.startDate.substring(0, 10)}</td>
+                            <td>{item.endDate.substring(0, 10)}</td>
                             <td>{item.count}</td>
                             <td>{item.year}</td>
                             <td><Button variant="contained" color="primary" onClick={() => {dodelete(item.id)}}>Delete</Button></td>
