@@ -28,7 +28,6 @@ for settingup database, refer https://github.com/sundar-gopal/Backend-graphql
 
 Login credentials:
 
+Admin can login with his email and password is his name---- and press ADMIN button
 
-
-     Admin can login with his email and password is his name---- and press ADMIN button
-     Employee can login with his email and password is his name ------ and press EMPLOYEE button
+Employee can login with his email and password is his name ------ and press EMPLOYEE button
